@@ -47,4 +47,8 @@ public class JwtUtil {
         Jws<Claims> jwt = getJwt(parseToken(bearer));
         return jwt.getHeader();
     }
+
+    public Long getRefreshTokenExp() {
+        return jwtProperties.getRefreshExp();
+    }
 }

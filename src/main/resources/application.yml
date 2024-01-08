@@ -1,6 +1,7 @@
 spring:
   config:
     import: classpath:/env.yml
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DB_URL}
@@ -36,3 +37,10 @@ bsm:
 
 server:
   port: ${PORT}
+
+oauth:
+  google:
+    client-id: ${GOOGLE_CLIENT_ID}
+    client-secret: ${GOOGLE_CLIENT_SECRET}
+    grant-type: ${GOOGLE_GRANT_TYPE}
+    redirect-uri: ${GOOGLE_CLIENT_REDIRECT_URI}

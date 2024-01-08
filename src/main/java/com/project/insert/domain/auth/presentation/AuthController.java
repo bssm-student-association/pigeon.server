@@ -1,6 +1,7 @@
 package com.project.insert.domain.auth.presentation;
 
 import com.project.insert.domain.auth.service.AccessTokenRefreshService;
+import com.project.insert.domain.user.service.UserGoogleLoginService;
 import com.project.insert.domain.user.service.UserLoginService;
 import com.project.insert.domain.user.service.UserLogoutService;
 import com.project.insert.global.jwt.dto.TokenResponseDto;
@@ -19,11 +20,17 @@ import java.io.IOException;
 public class AuthController {
     private final UserLoginService userLoginService;
     private final UserLogoutService userLogoutService;
+    private final UserGoogleLoginService userGoogleLoginService;
     private final AccessTokenRefreshService accessTokenRefreshService;
 
-    @PostMapping("/login")
+    @PostMapping("/login/bsm")
     public TokenResponseDto userSignup(@RequestHeader("authCode") String code) throws IOException {
         return ResponseEntity.ok(userLoginService.execute(code)).getBody();
+    }
+
+    @PostMapping("/login/google")
+    public TokenResponseDto userGoogleSignup(@RequestParam String code) throws IOException{
+        return ResponseEntity.ok(userGoogleLoginService.execute(code)).getBody();
     }
 
     @DeleteMapping("/logout")
