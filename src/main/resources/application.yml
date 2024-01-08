@@ -1,0 +1,38 @@
+spring:
+  config:
+    import: classpath:/env.yml
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  redis:
+    port : 6379
+    host : localhost
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: debug
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+auth:
+  jwt:
+    header: ${HEADER}
+    secret: ${SECRET}
+    accessExp: ${ACCESS_EXP}
+    refreshExp: ${REFRESH_EXP}
+    prefix: ${PREFIX}
+
+bsm:
+  client-id: ${BSM_CLIENT_ID}
+  secret-key: ${BSM_SECRET_KEY}
+  redirect-url: ${BSM_REDIRECT_URL}
+
+server:
+  port: ${PORT}
