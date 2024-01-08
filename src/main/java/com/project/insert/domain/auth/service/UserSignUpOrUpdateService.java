@@ -38,7 +38,7 @@ public class UserSignUpOrUpdateService {
         return updateOrSignUp(resource);
     }
 
-    @Transactional
+
     protected User updateOrSignUp(BsmResourceResponse resource) {
         Optional<User> user = userRepository.findByEmail(resource.getEmail());
         if(user.isEmpty()) {
@@ -48,12 +48,16 @@ public class UserSignUpOrUpdateService {
         return updateUser.update(resource);
     }
 
-    @Transactional
     protected User saveUser(BsmResourceResponse response) {
         return userRepository.save(
             User.builder()
             .email(response.getEmail())
             .nickname(response.getNickname())
+            .grade(response.getStudent().getGrade())
+                    .enroll(response.getStudent().getEnrolledAt())
+                    .name(response.getStudent().getName())
+                    .class_number(response.getStudent().getClassNo())
+                    .student_number(response.getStudent().getStudentNo())
             .authority(Authority.USER)
             .build()
             );
