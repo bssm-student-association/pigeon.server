@@ -1,11 +1,6 @@
 package com.project.insert.global.jwt.auth;
 
-import com.project.insert.domain.auth.domain.repository.AuthIdRepository;
-import com.project.insert.domain.user.exception.UserNotLoginException;
-import com.project.insert.global.jwt.config.JwtConstants;
-import com.project.insert.global.jwt.exception.InvalidJwtException;
 import com.project.insert.global.jwt.util.JwtUtil;
-import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
